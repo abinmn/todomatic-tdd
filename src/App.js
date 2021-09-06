@@ -9,7 +9,7 @@ function App(props) {
 
   function addTask(name) {
     const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
-    setTasks([...tasks, name]);
+    setTasks([...tasks, newTask]);
   }
 
   function toggleTaskCompleted(id) {
@@ -17,13 +17,26 @@ function App(props) {
   }
 
   function deleteTask(id) {
-    
+
   }
+
+  const taskList = tasks
+  .map(
+    task => <Todo
+      id={task.id}
+      name={task.name}
+      completed={task.completed}
+      key={task.id}
+      toggleTaskCompleted={toggleTaskCompleted}
+      deleteTask={deleteTask}
+    />
+  );
 
   return (
     <div>
       <Form addTask={addTask} />
       <ul id="task-list" data-testid="test-task-list"> 
+        {taskList}
       </ul>
     
     </div>
