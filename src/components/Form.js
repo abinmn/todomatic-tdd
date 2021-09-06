@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Form = (prop) => {
+const Form = (props) => {
     const [name, setName] = useState("");
 
     function handleInput(e) {
@@ -8,6 +8,8 @@ const Form = (prop) => {
     }
 
     function handleSubmit(e) {
+        e.preventDefault();
+        props.addTask(name);
         setName("");
     }
 

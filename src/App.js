@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Form from './components/Form';
+import Todo from './components/Todo';
 
-function App() {
+function App(props) {
+
+  function addTask(name) {
+    console.log(name);
+  }
+
   return (
     <div>
-      <Form/>
+      <Form addTask={addTask} />
+      <Todo/>
     </div>
   );
 }
